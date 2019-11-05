@@ -41,7 +41,10 @@ class ArticlesController < ApplicationController
   end
 
   delete '/articles/:id' do
-    raise "YOU ARE ABOUT TO DELETE #{params[:id]}"
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect "/articles"
   end
 
 
