@@ -25,4 +25,21 @@ class ArticlesController < ApplicationController
     erb :"articles/show"
   end
 
+  get '/articles/:id/edit' do
+    @article = Article.find(params[:id])
+
+    erb :"articles/edit"
+  end
+
+  patch '/posts/:id' do
+    @article = Article.find(params[:id])
+    @article.title = params[:title]
+    @article.content = params[:content]
+    @article.save
+
+    redirect "/articles/#{@article.id}"
+  end
+
+
+
 end
