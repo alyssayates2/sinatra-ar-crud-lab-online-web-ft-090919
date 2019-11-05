@@ -31,13 +31,17 @@ class ArticlesController < ApplicationController
     erb :"articles/edit"
   end
 
-  patch '/posts/:id' do
+  patch '/articles/:id' do
     @article = Article.find(params[:id])
     @article.title = params[:title]
     @article.content = params[:content]
     @article.save
 
     redirect "/articles/#{@article.id}"
+  end
+
+  delete '/articles/:id' do
+    raise "YOU ARE ABOUT TO DELETE #{params[:id]}"
   end
 
 
