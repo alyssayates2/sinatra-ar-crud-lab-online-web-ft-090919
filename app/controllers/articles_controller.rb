@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   get '/articles/new' do
-    @article = Article.create(params[:title], params[:content])
+    @article = Article.new
     erb :"articles/new"
   end
 
