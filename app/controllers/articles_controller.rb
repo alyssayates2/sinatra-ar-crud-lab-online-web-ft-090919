@@ -7,8 +7,17 @@ class ArticlesController < ApplicationController
   end
 
   get '/articles/new' do
-    @article = Article.new
     erb :"articles/new"
+  end
+
+  post '/articles' do
+    @article = Article.create({title: params[:title], content: params[:content]})
+    erb :"articles/show"
+  end
+
+  get '/articles/:id' do
+    @article = Article.find(params[:id])
+    erb :"articles/show"
   end
 
 end
