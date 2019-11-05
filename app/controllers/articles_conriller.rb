@@ -1,12 +1,4 @@
-
-require_relative '../../config/environment'
-
-class ApplicationController < Sinatra::Base
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-  end
+class ArticlesConroller < ApplicationController
 
   get '/articles' do
     @articles = Article.all
@@ -14,10 +6,13 @@ class ApplicationController < Sinatra::Base
     erb :"articles/index"
   end
 
+  get '/articles/new' do
+    "Does this load?"
+  end
+
   get '/articles/:id' do
     @article = Article.find(params[:id])
     erb :"articles/show"
   end
-
 
 end
